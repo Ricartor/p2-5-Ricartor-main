@@ -115,8 +115,8 @@ class LogisticRegressor:
         """
 
         # TODO: z is the value of the logits. Write it here (use self.weights and self.bias)
-        z = np.dot(X, self.weights) + self.bias
- 
+        z = np.dot(X, self.weights) 
+        z +=  self.bias
         return self.sigmoid(z)
     def predict(self, X, threshold=0.5):
         """
@@ -132,14 +132,14 @@ class LogisticRegressor:
         - A numpy array of shape (m,) containing the class label (0 or 1) for each sample.
         """
         # TODO: Predict the class for each input data given the threshold in the argument´
-        lista = []
+        lista_numeros = []
         probabilities = self.predict_proba(X)
         for i in range(0,len(X)):
             if probabilities[i] > threshold:
-                lista.append(1)
+                lista_numeros.append(1)
             else:
-                lista.append(0)
-        classification_result = np.array(lista)
+                lista_numeros.append(0)
+        classification_result = np.array(lista_numeros)
 
         return classification_result
 
